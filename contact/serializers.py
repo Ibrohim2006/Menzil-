@@ -2,12 +2,13 @@ from rest_framework import serializers
 from .models import Icon, Contact
 
 
-class ContactSerializers(serializers):
-    model = Contact
-    field = ['id', 'name', 'email', 'message']
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['id', 'name', 'email', 'message']
 
 
-class IconSerializers(serializers):
-    model = Icon
-    field = ['id','image']
-
+class IconSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Icon
+        fields = ['id', 'name','image',]

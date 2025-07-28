@@ -6,8 +6,8 @@ class Contact(models.Model):
     email = models.EmailField()
     message = models.TextField()
 
-    created_at = models.DateTimeField(auto_now=True)
-    updates_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -15,10 +15,10 @@ class Contact(models.Model):
 
 class Icon(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField('icon/', blank=True)
+    image = models.ImageField(upload_to='icon/', blank=True)  # 'upload_to' kerak
 
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.name}"
