@@ -211,4 +211,4 @@ __marimo__/
 !*/migrations/__init__.py
 
 # Media files
-/media/
+*/media/
