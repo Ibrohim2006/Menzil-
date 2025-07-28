@@ -8,16 +8,6 @@ from .serializers import ContactSerializer, IconSerializer
 
 class ContactViewSet(ViewSet):
     @swagger_auto_schema(
-        responses={200: ContactSerializer(many=True)},
-        operation_description="Get all contact messages",
-        tags=['Contact']
-    )
-    def list(self, request):
-        contacts = Contact.objects.all()
-        serializer = ContactSerializer(contacts, many=True, context={'request': request})
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    @swagger_auto_schema(
         request_body=ContactSerializer,
         response={201: ContactSerializer},
         operation_description="Create new contact message",
