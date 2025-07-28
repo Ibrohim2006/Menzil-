@@ -34,13 +34,17 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),  
+]
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('api/v1/contact/', include('contact.urls')),
     path('api/v1/about/', include('about.urls')),
     path('api/v1/catalog/', include('catalog.urls')),
     path('api/v1/gallery/', include('gallery.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-]
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
