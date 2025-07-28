@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # Installed app
     'rest_framework',
     'drf_yasg',
+    'modeltranslation',
     'parler'
 ]
 
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -149,6 +151,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('uz', _('Uzbek')),
+    ('ru', _('Russian')),
+)
+MODELTRANSLATION_LANGUAGES = ('en', 'uz', 'ru')
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
