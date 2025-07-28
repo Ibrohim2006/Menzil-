@@ -49,10 +49,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'modeltranslation',
+    'parler'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,9 +118,31 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('uz', _('Uzbek')),
+]
 
-TIME_ZONE = 'UTC'
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'ru'},
+        {'code': 'uz'},
+    ),
+    'default': {
+        'fallbacks': ['en'],
+        'hide_untranslated': False,
+    }
+}
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',  
+]
+
+LANGUAGE_CODE = 'en'
+
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -151,3 +175,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+SWAGGER_SETTINGS = {
+    'SCHEMES': ['https'],
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+}
