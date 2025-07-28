@@ -35,9 +35,13 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/contact/', include('contact.urls')),
+    path('api/v1/about/', include('about.urls')),
+    path('api/v1/about/', include('about.urls')),
+    path('api/v1/catalog/', include('catalog.urls')),
+    path('api/v1/gallery/', include('catalog.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

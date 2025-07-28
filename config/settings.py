@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # Custom packages
     'about',
     'catalog',
     'core',
     'gallery',
-
+    'contact',
+    # Installed app
     'rest_framework',
     'drf_yasg'
 ]
