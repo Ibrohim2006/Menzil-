@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+
 class HomeViewSet(ViewSet):
     def about_company(self, request, *arg, **kwargs):
         about_company = AboutCompanyModel.objects.all().first()
